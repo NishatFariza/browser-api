@@ -6,22 +6,23 @@ const addItem = () => {
     displayProducts(nameFieldValue);
 
     //add to local stroage
-    addProductToCart(name)
+    addProductToCart(nameFieldValue)
 
 
     nameField.value="";
 }
 
-const displayProducts = name =>{
+const displayProducts = productName =>{
     const ul = document.getElementById('products')
      const li =document.createElement('li')
-     li.innerHTML = name;
+     li.innerHTML = productName;
      ul.appendChild(li)
 }
 
 
 const getCart = () =>{
     const cart =localStorage.getItem('cart')
+    console.log(cart);
     let cartObj;
     if(cart){
         cartObj = JSON.parse(cart)
@@ -34,7 +35,7 @@ const getCart = () =>{
 
 const addProductToCart = name =>{
     const cart = getCart();
-    cart[name] =1;
+    cart[name] =5;
     // console.log(cart);
     const cartStiringfied =JSON.stringify(cart)
     localStorage.setItem('cart', cartStiringfied)
